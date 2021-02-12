@@ -1,12 +1,15 @@
-const DiscordStrategy = require('passport-discord').Strategy;
-const passport = require('passport')
 
-passport.use(new DiscordStrategy({
-    clientID: process.env.CLIENT_ID,
-    clientSecret: process.env.CLIENT_SECRET,
-    callbackURL: process.env.CLIENT_REDIRECT,
-    scope: ['identify', 'guilds'],
-},
+const passport = require('passport')
+const OAuth2Strategy = require('passport-discord').Strategy;
+
+
+passport.use(new OAuth2Strategy({
+        clientID: '801168654510719016',
+        clientSecret: 'LCsugrDDJGHjVTxmqzV6QXt6i5vJHeCz',
+        callbackURL: 'http://localhost:3000/auth/redirect',
+        scope: ['email', 'guilds', 'identify'],
+    },
     (accessToken, refreshToken, profile, done) => {
-        console.log('it is work')
-    }))
+         console.log(profile.username)
+    }
+));

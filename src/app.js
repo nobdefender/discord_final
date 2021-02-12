@@ -1,11 +1,11 @@
 const express = require('express')
 const app = express();
-require('dotenv').config()
-const PORT = process.env.PORT || 3001;
+const PORT = 3000;
 const authRoute = require('./routes/auth')
 const session = require('express-session')
 const passport = require('passport')
 require('./strategies/discordstrategy')
+
 
 
 app.use(session({
