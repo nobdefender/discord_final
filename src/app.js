@@ -6,6 +6,8 @@ const session = require('express-session')
 const passport = require('passport')
 require('./strategies/discordstrategy')
 const db = require('./database/database')
+const dashboardRoute = require('./routes/dashboard')
+
 
 db.then(() => console.log('Connected to MongoDB')).catch(err => console.log(err))
 
@@ -25,8 +27,11 @@ app.use(session({
 }))
 app.use(passport.initialize())
 app.use(passport.session());
-app.use('/auth', authRoute)
 
+//Routes
+
+app.use('/auth', authRoute)
+app.use('/dashboard', dashboardRoute)
 
 
 app.listen(PORT, () => {

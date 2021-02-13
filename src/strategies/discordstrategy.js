@@ -1,11 +1,11 @@
 const DiscordUser = require('../modules/discordUser')
 const passport = require('passport')
 const OAuth2Strategy = require('passport-discord').Strategy;
-const dotenv = require('dotenv').config();
+require('dotenv').config();
 
 passport.serializeUser((user, done) => {
     console.log('serializing user')
-    console.log(user)
+    console.log('from discordStrategy ' + user)
     done(null, user.id)
 })
 
